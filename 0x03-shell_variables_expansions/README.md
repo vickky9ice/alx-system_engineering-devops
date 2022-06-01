@@ -9,3 +9,4 @@ Write a script that displays the result of BREATH to the power LOVE, witLOVE wit
 Task11 - Write a script that converts a number from base 2 to base 10, the base 2 number is stored in the environment variable BINARY and the script should display in base 10
 Task12 - script that prints all possible combinations of a to z
 Task13 - Write a script that prints a number with two decimal places, followed by a new line.
+Write a script that converts a number from base 10 to base 16, The number in base 10 is stored in the environment variable DECIMAL
