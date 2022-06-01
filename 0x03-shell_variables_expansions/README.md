@@ -10,3 +10,4 @@ Task11 - Write a script that converts a number from base 2 to base 10, the base 
 Task12 - script that prints all possible combinations of a to z
 Task13 - Write a script that prints a number with two decimal places, followed by a new line.
 Write a script that converts a number from base 10 to base 16, The number in base 10 is stored in the environment variable DECIMAL
+Write a script that encodes and decodes text using the rot13 encryption. Assume ASCII.
