@@ -12,3 +12,4 @@ Task13 - Write a script that prints a number with two decimal places, followed b
 Write a script that converts a number from base 10 to base 16, The number in base 10 is stored in the environment variable DECIMAL
 Write a script that encodes and decodes text using the rot13 encryption. Assume ASCII.
 Task16 - a script that prints every other line from the input, starting with the first line
+a shell script that adds the two numbers stored in the environment variables WATER and STIR and prints the result.
