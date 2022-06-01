@@ -5,3 +5,4 @@ Task6 - script that creates a new local variable
 Task7 - script that creates a new global variable
 Task8 - script that prints the result of an addition
 Task9 - Write a script that prints the result of POWER divided by DIVIDE, followed by a new line.
+Write a script that displays the result of BREATH to the power LOVE, witLOVE with BREATH and LOVE being environment variables
