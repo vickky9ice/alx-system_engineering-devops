@@ -1,25 +1,13 @@
 #!/usr/bin/env bash
-# Using SIGNALS and management with processes.
+# Create a .pid file on /var/run and this process can be killed (Have special interactions)
+trap "echo \"Y U no love me?!\"; exit" SIGINT
+trap "sudo rm /var/run/myscript.pid; exit" SIGQUIT
+trap "echo \"I hate the kill command\"; sudo rm /var/run/myscript.pid; exit" SIGTERM
 
-FILE="/var/run/holbertonscript.pid"
+echo "$$" > /var/run/myscript.pid
 
-function clean_up()
-{
-    rm -rf $FILE
-    if $1;
-    then
-	echo "I hate the kill command"
-    fi
-    exit
-}
-
-echo "$$" > $FILE
-
-trap clean_up "true" SIGTERM
-trap clean_up "false" SIGQUIT
-trap 'echo "Y U no love me?!"' SIGINT
-
-while true;
+while true
 do
-    echo "To infinity and beyond"
+	echo "To infinity and beyond"
+	sleep 2
 done
