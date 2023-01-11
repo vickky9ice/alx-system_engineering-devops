@@ -58,7 +58,7 @@ This repository contains projects on:
 In your terminal, git clone the directory with the following command:
 
 ```sh
-git clone https://github.com/Esteban1891/[Github project directory]
+git clone https://github.com/vickky9ice/[Github project directory]
 ```
 
 ## Usage
