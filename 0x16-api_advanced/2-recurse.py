@@ -1,46 +1,36 @@
 #!/usr/bin/python3
 """
-Function that queries the Reddit API and prints
-the top ten hot posts of a subreddit
+Querying the Reddit API recursively
 """
 import requests
-import sys
-
-
-def add_title(hot_list, hot_posts):
-    """ Adds item into a list """
-    if len(hot_posts) == 0:
-        return
-    hot_list.append(hot_posts[0]['data']['title'])
-    hot_posts.pop(0)
-    add_title(hot_list, hot_posts)
 
 
 def recurse(subreddit, hot_list=[], after=None):
-    """ Queries to Reddit API """
-    u_agent = 'Mozilla/5.0'
-    headers = {
-        'User-Agent': u_agent
-    }
-
-    params = {
-        'after': after
-    }
-
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    res = requests.get(url,
-                       headers=headers,
-                       params=params,
-                       allow_redirects=False)
-
-    if res.status_code != 200:
+    if type(subreddit) is not str:
         return None
+    sub = subreddit
+    api_url = "https://api.reddit.com/r/{}/hot?after={}".format(sub, after)
+    headers = {'user-agent': 'safari:holberton/0.1.0'}
+    response = requests.get(api_url, headers=headers)
+    if response.status_code == 200:
+        hot_posts = response.json()["data"]["children"]
+        after = response.json()["data"]["after"]
+        if after is None:
+            hot_list = titles(hot_posts, len(hot_posts))
+            return hot_list
+        hot_list.append(recurse(subreddit, hot_list, after=after))
+        hot_list = titles(hot_posts, len(hot_posts))
+    else:
+        return None
+    return hot_list
 
-    dic = res.json()
-    hot_posts = dic['data']['children']
-    add_title(hot_list, hot_posts)
-    after = dic['data']['after']
-    if not after:
-        return hot_list
-    return recurse(subreddit, hot_list=hot_list, after=after)
+
+def titles(hot_list, length, titles_list=[]):
+    """
+    Gets titles of posts from the data
+    """
+    if length == 0:
+        return titles_list
+    titles_list.append(hot_list[length - 1]["data"]["title"])
+    return titles(hot_list, length - 1, titles_list)
 
